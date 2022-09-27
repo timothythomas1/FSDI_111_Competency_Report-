@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block content %}
+<div class="top-banner">
+    <h1>My Notes</h1>
+    <p>Click on title for single read</p>
+</div>
+
+<ol>
+    {% for nt in notes %}
+    <div style="display: flex; align-items: center; align-content: center;">
+        <form action="{{ url_for('delete_this_note', pk=nt['id']) }}" method='DELETE' >
+            <button  style="margin: 5px" class="btn btn-sm btn-danger" type="submit">Delete</button>
+        </form>
+        <form action="{{ url_for('get_one_note', pk=nt['id']) }}" method='GET' >
+            <button  style="margin: 5px" class="btn btn-sm btn-warning" type="submit">Update</button>
+        </form>
+        <li style="margin: 20px"><strong>
+            <a aria-current="page" href="{{ url_for('view_one_note', pk=nt['id']) }}">{{nt["title"] }}</a>
+        </strong></li>
+    </div>
+    <p style="margin-left:166px">{{ nt["subtitle"] }}</p>
+    <p style="margin-left:166px">{{ nt["body"] }}</p>
+    {% endfor %}
+</ol>
+{% endblock content %}

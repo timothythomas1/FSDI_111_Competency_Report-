@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    About
+{% endblock title %}
+
+{% block content %}
+    <h1>About {{ about_dict["first_name"] }} {{ about_dict["last_name"] }}</h1>
+    <p>Hobbies: {{ about_dict["Hobbies"] }}</p>
+    <p>{{ about_dict["bio"] }}</p>
+{% endblock content %}

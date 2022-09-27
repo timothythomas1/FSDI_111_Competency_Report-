@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    One View
+{% endblock title %}
+
+{% block content %}
+<div style="display: flex; align-items: center; align-content: center;">
+    <form action="{{ url_for('delete_this_note', pk=target_note['id']) }}" method='DELETE' >
+        <button  style="margin: 5px" class="btn btn-sm btn-danger" type="submit">Delete</button>
+    </form>
+    <form action="{{ url_for('get_one_note', pk=target_note['id']) }}" method='GET' >
+        <button  style="margin: 5px" class="btn btn-sm btn-warning" type="submit">Update</button>
+    </form>
+    <li style="margin: 20px"><strong>
+        <a aria-current="page" href="{{ url_for('get_index') }}">{{target_note["title"] }}</a>
+    </strong></li>
+</div>
+<p style="margin-left:166px">{{ target_note["subtitle"] }}</p>
+<p style="margin-left:166px">{{ target_note["body"] }}</p>
+{% endblock content %}
